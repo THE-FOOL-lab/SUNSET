@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunset Drive</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="scene">
+       
+        <div class="sky">
+            <div class="sun"></div>
+            <div class="cloud cloud1"></div>
+            <div class="cloud cloud2"></div>
+            <div class="cloud cloud3"></div>
+        </div>
+        
+       
+        <div class="mountains">
+            <div class="mountain mountain1"></div>
+            <div class="mountain mountain2"></div>
+            <div class="mountain mountain3"></div>
+        </div>
+        
+       
+        <div class="highway">
+            <div class="road">
+                <div class="lane-marking"></div>
+            </div>
+        </div>
+        
+        
+        <div class="car-container">
+            <div class="car">
+                <div class="car-body">
+                    <div class="windshield"></div>
+                    <div class="car-roof"></div>
+                    <div class="car-door"></div>
+                    <div class="car-handle"></div>
+                </div>
+                <div class="wheel wheel-front">
+                    <div class="rim"></div>
+                    <div class="spoke spoke1"></div>
+                    <div class="spoke spoke2"></div>
+                    <div class="spoke spoke3"></div>
+                    <div class="spoke spoke4"></div>
+                </div>
+                <div class="wheel wheel-rear">
+                    <div class="rim"></div>
+                    <div class="spoke spoke1"></div>
+                    <div class="spoke spoke2"></div>
+                    <div class="spoke spoke3"></div>
+                    <div class="spoke spoke4"></div>
+                </div>
+                <div class="headlight"></div>
+                <div class="taillight"></div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const car = document.querySelector('.car-container');
+    const sun = document.querySelector('.sun');
+    const clouds = document.querySelectorAll('.cloud');
+    
+    function createCloud() {
+        const cloud = document.createElement('div');
+        cloud.className = 'cloud';
+        cloud.style.width = Math.random() * 40 + 40 + 'px';
+        cloud.style.height = Math.random() * 15 + 15 + 'px';
+        cloud.style.top = Math.random() * 30 + 10 + '%';
+        cloud.style.left = '-100px';
+        cloud.style.animationDuration = Math.random() * 20 + 20 + 's';
+        
+        document.querySelector('.sky').appendChild(cloud);
+        
+        setTimeout(() => {
+            cloud.remove();
+        }, 50000);
+    }
+    
+    
+    setInterval(createCloud, 8000);
+    
+   
+    let carOffset = 0;
+    setInterval(() => {
+        carOffset += Math.random() * 0.5 - 0.25;
+        carOffset = Math.max(-2, Math.min(2, carOffset));
+        car.style.transform = `translateX(${carOffset}px)`;
+    }, 100);
+    
+    
+    let sunIntensity = 0;
+    setInterval(() => {
+        sunIntensity += 0.02;
+        const glow = Math.sin(sunIntensity) * 0.2 + 1;
+        sun.style.boxShadow = `0 0 ${50 * glow}px #ffd700, 0 0 ${100 * glow}px #ff8c00`;
+    }, 50);
+});
+</script>

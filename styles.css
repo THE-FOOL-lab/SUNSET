@@ -1,0 +1,354 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+.scene {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    background: linear-gradient(to bottom, 
+        #ff6b35 0%, 
+        #f7931e 30%, 
+        #ffd65d 60%, 
+        #ffb347 80%, 
+        #ff8c42 100%);
+}
+
+
+.sky {
+    position: absolute;
+    width: 100%;
+    height: 70%;
+    top: 0;
+}
+
+.sun {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, #fffacd 0%, #ffd700 70%, #ff8c00 100%);
+    border-radius: 50%;
+    top: 10%;
+    right: 15%;
+    box-shadow: 0 0 50px #ffd700, 0 0 100px #ff8c00;
+    animation: sunGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes sunGlow {
+    0% { transform: scale(1); opacity: 0.9; }
+    100% { transform: scale(1.1); opacity: 1; }
+}
+
+
+.cloud {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50px;
+    animation: cloudMove 20s linear infinite;
+}
+
+.cloud:before,
+.cloud:after {
+    content: '';
+    position: absolute;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50px;
+}
+
+.cloud1 {
+    width: 80px;
+    height: 30px;
+    top: 15%;
+    left: -100px;
+    animation-duration: 25s;
+}
+
+.cloud1:before {
+    width: 50px;
+    height: 50px;
+    top: -25px;
+    left: 10px;
+}
+
+.cloud1:after {
+    width: 60px;
+    height: 40px;
+    top: -15px;
+    right: 10px;
+}
+
+.cloud2 {
+    width: 60px;
+    height: 25px;
+    top: 25%;
+    left: -80px;
+    animation-duration: 30s;
+}
+
+.cloud2:before {
+    width: 40px;
+    height: 40px;
+    top: -20px;
+    left: 5px;
+}
+
+.cloud2:after {
+    width: 50px;
+    height: 30px;
+    top: -10px;
+    right: 5px;
+}
+
+.cloud3 {
+    width: 70px;
+    height: 28px;
+    top: 20%;
+    left: -90px;
+    animation-duration: 35s;
+}
+
+.cloud3:before {
+    width: 45px;
+    height: 45px;
+    top: -22px;
+    left: 8px;
+}
+
+.cloud3:after {
+    width: 55px;
+    height: 35px;
+    top: -12px;
+    right: 8px;
+}
+
+@keyframes cloudMove {
+    0% { transform: translateX(-100px); }
+    100% { transform: translateX(calc(100vw + 100px)); }
+}
+
+
+.mountains {
+    position: absolute;
+    width: 100%;
+    height: 40%;
+    bottom: 30%;
+}
+
+.mountain {
+    position: absolute;
+    bottom: 0;
+}
+
+.mountain1 {
+    width: 0;
+    height: 0;
+    border-left: 200px solid transparent;
+    border-right: 200px solid transparent;
+    border-bottom: 150px solid #8b4513;
+    left: 10%;
+}
+
+.mountain2 {
+    width: 0;
+    height: 0;
+    border-left: 250px solid transparent;
+    border-right: 250px solid transparent;
+    border-bottom: 200px solid #654321;
+    left: 30%;
+}
+
+.mountain3 {
+    width: 0;
+    height: 0;
+    border-left: 180px solid transparent;
+    border-right: 180px solid transparent;
+    border-bottom: 120px solid #8b4513;
+    right: 10%;
+}
+
+
+.highway {
+    position: absolute;
+    width: 100%;
+    height: 30%;
+    bottom: 0;
+    background: linear-gradient(to bottom, #555 0%, #333 100%);
+    perspective: 1000px;
+}
+
+.road {
+    width: 100%;
+    height: 100%;
+    background: #333;
+    position: relative;
+}
+
+.lane-marking {
+    position: absolute;
+    width: 100%;
+    height: 8px;
+    background: repeating-linear-gradient(
+        to right,
+        transparent 0px,
+        transparent 40px,
+        #ffff00 40px,
+        #ffff00 80px
+    );
+    top: 50%;
+    transform: translateY(-50%);
+    animation: roadMove 1s linear infinite;
+}
+
+@keyframes roadMove {
+    0% { transform: translateY(-50%) translateX(0); }
+    100% { transform: translateY(-50%) translateX(-80px); }
+}
+
+
+.car-container {
+    position: absolute;
+    bottom: 30%;
+    left: 20%;
+    animation: carBounce 2s ease-in-out infinite;
+}
+
+@keyframes carBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-2px); }
+}
+
+.car {
+    position: relative;
+    width: 200px;
+    height: 80px;
+}
+
+.car-body {
+    position: absolute;
+    width: 180px;
+    height: 50px;
+    background: linear-gradient(to bottom, #e74c3c 0%, #c0392b 100%);
+    border-radius: 20px 20px 5px 5px;
+    bottom: 20px;
+    left: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.windshield {
+    position: absolute;
+    width: 60px;
+    height: 30px;
+    background: rgba(135, 206, 235, 0.8);
+    border-radius: 10px;
+    top: 5px;
+    left: 20px;
+    border: 2px solid #2c3e50;
+}
+
+.car-roof {
+    position: absolute;
+    width: 80px;
+    height: 25px;
+    background: linear-gradient(to bottom, #c0392b 0%, #a93226 100%);
+    border-radius: 15px 15px 0 0;
+    top: -10px;
+    left: 15px;
+}
+
+.car-door {
+    position: absolute;
+    width: 2px;
+    height: 35px;
+    background: #a93226;
+    top: 8px;
+    right: 40px;
+}
+
+.car-handle {
+    position: absolute;
+    width: 8px;
+    height: 4px;
+    background: #2c3e50;
+    border-radius: 2px;
+    top: 20px;
+    right: 45px;
+}
+
+.headlight {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: radial-gradient(circle, #fffacd 0%, #ffd700 100%);
+    border-radius: 50%;
+    bottom: 35px;
+    right: 0;
+    box-shadow: 0 0 20px #ffd700;
+}
+
+.taillight {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #e74c3c;
+    border-radius: 50%;
+    bottom: 37px;
+    left: 0;
+}
+
+
+.wheel {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: radial-gradient(circle, #2c3e50 0%, #34495e 40%, #2c3e50 100%);
+    border-radius: 50%;
+    bottom: 0;
+    animation: wheelSpin 0.5s linear infinite;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+}
+
+.wheel-front {
+    right: 20px;
+}
+
+.wheel-rear {
+    left: 20px;
+}
+
+@keyframes wheelSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.rim {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #ecf0f1;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.spoke {
+    position: absolute;
+    width: 2px;
+    height: 15px;
+    background: #bdc3c7;
+    top: 50%;
+    left: 50%;
+    transform-origin: center bottom;
+}
+
+.spoke1 { transform: translate(-50%, -100%) rotate(0deg); }
+.spoke2 { transform: translate(-50%, -100%) rotate(45deg); }
+.spoke3 { transform: translate(-50%, -100%) rotate(90deg); }
+.spoke4 { transform: translate(-50%, -100%) rotate(135deg); }
